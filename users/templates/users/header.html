@@ -1,0 +1,7 @@
+<header>            
+            <h4>
+                {% if request.user.is_authenticated %}
+                    <p class="user_name">Hi, {{request.user}}</p>
+                {% endif %}
+            </h4>
+</header>

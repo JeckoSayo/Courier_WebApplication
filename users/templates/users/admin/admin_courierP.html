@@ -1,0 +1,52 @@
+{% extends 'users/admin/admin_main.html'%}
+{% block title %}
+
+Courier Partners
+
+{% endblock %}
+{% block content %}
+	<main>
+               <section class="recent">
+                    <div class="activity-card">
+                    <div id="header-card">
+                        <h3>Courier Partners</h3>
+                    <a href="{% url 'add_courierP' %}">
+                        <button type="button" class="btn btn-primary">Add Partners</button>
+                    </a>
+                    </div>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>Address</th>
+                                        <th>Contact No. </th>
+                                        <th id="two">Email</th>
+                                        <th>Password</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                        <tr>
+                                            <td>jecko</td>
+                                            <td>manila</td>
+                                            <td>0256987225</td>
+                                            <td>jecko@gmail.com</td>
+                                            <td>123</td>
+                                            <td>
+               									<span class="las la-trash-alt" id="trash"></span>
+               									<span class="las la-edit" id="edit"></span>
+                                            </td>
+                                        </tr>
+                                        
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+            </section>
+            
+        </main>
+{% endblock %}

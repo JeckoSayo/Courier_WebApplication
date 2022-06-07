@@ -1,0 +1,86 @@
+{% load static %}
+<div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="las la-user-alt"></span> 
+                {% if request.user.is_authenticated and request.user and request.user.is_staff == False  %}
+                <span>User Panel</span>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                <span>Admin Panel</span>
+                {% endif %}
+            </h3> 
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'user_dashboard' %}">
+                        <span class="las la-igloo"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user_transaction' %}">
+                        <span class="las la-briefcase"></span>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user_profile' %}">
+                        <span class="las la-user"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                 <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >
+
+                        <span class="las la-clipboard-list"></span>
+                        <span class="user1" >Reports Excel</span>
+                        <span class="las la-angle-down down"></span>
+
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                             <a href="{% url 'export-transact-excel' %}">
+                                <span class="las la-file-excel" id="one"></span>
+                                <span>Transactions<span class="lit">.xlsx</span></span>
+                            </a>
+                        </li>
+                        <li>
+                             <a href="{% url 'export-partner-excel' %}">
+                                <span class="las la-shipping-fast" id="one"></span>
+                                <span>DeliveryPartners<span class="lit">.xlsx</span></span>
+                             </a>
+                        </li>
+                        <li>
+                             <a href="{% url 'export-courier-excel' %}">
+                                <span class="las la-dolly" id="one"></span>
+                                <span>Courier Partners<span class="lit">.xlsx</span></span>
+                             </a>
+                        </li>
+
+                        <li>
+                             <a href="{% url 'export-pdf' %}">
+                                <span class="las la-file-pdf" id="one"></span>
+                                <span>Export PDF</span>
+                             </a>
+                        </li>
+
+                    </ul>
+                </li>
+                 {% endif %}
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="las la-sign-out-alt"></span>
+                         <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+             <img src="{% static 'users/img/Logo2.png' %}" class="logo2">
+        </div>
+    </div>

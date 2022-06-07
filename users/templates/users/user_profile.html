@@ -1,0 +1,75 @@
+{% extends 'users/main.html' %}
+{% block title %}
+
+Profile
+
+{% endblock %}
+{% block content %}
+
+    
+        <main>
+            <section class="recent">
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <div id="header-card">
+                        <h3>YOUR PROFILE</h3>
+                        </div>
+                        <div class="table-responsive">
+
+<form method="POST" name="edit_profile">
+{% csrf_token %}
+<div class="container">
+                          
+    <div class="row">
+    	
+        <div class="col-6">
+            <label for="">Full Name</label>
+    		<input type="text" class="form-control"  name="username" value="{{ user.username }}">
+    	</div>
+    	<div class="col-6">
+            <label for="">Contact No</label>
+    		<input type="text" class="form-control" name="user_contact" onkeypress="isInputNumber(event)" value="{{ user.user_contact }}">
+    	</div>
+    	<div class="col-6">
+            <label for="">Address</label>
+    		<input type="text" class="form-control" name="user_address" value="{{ user.user_address }}">
+    	</div>
+    	<div class="col-6">
+            <label for="">Email Address</label>
+    		<input type="email" class="form-control"  name="email" value="{{ user.email }}">
+    	</div>
+        <div class="col-12">
+             <h5>Enter your password to update your profile</h5>
+             <hr>
+        </div>
+    	<div class="col-6">
+
+            <label for="">Password</label>
+    		<input type="password" class="form-control" name="password1" value="{{ user.password1 }}">
+    	</div>
+        <div class="col-6">
+            <label for="">Confirm Password</label>
+            <input type="password" class="form-control" name="password2" value="{{ user.password2 }}">
+        </div>
+      
+    <!-- Finish edit profile -->
+    <button type="submit" class="btn btn-primary mt-3" id="but1" name="user_sub">Submit</button>
+    </div>
+</div>
+
+{% if registration_form.non_field_errors %}
+    <script type="text/javascript">
+        window.onload = function(){
+            alert('{{registration_form.non_field_errors}}')
+        }               
+    </script>
+{% endif %}
+  </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+{% endblock %}

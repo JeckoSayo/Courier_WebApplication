@@ -1,0 +1,50 @@
+{% extends 'users/Delivery_AND_Courier/main.html' %}
+{% block title %}
+
+Courier Partners 
+
+{% endblock %}
+{% block content %}
+<div class="main">
+  <form method="post">
+    {% csrf_token %}
+    <div class="container">
+      <h4>Create Courier Partners Account</h4>
+
+      <a href="{% url 'Home' %}">
+          <span class="las la-times" id="icon">
+          <span class="tooltiptext">Close</span>
+          </span>
+      </a>
+
+      <div class="row">
+          <div class="col-12">
+            <label for="">Company Name</label>
+            <input type="text" class="form-control" name="company_name">
+          </div>
+          
+             <div class="col-12">
+              <label for="">Address</label>
+             <input type="text" class="form-control" name="company_address">
+            </div>
+            <div class="col-12">
+              <label for="">Contact No.</label>
+               <input type="text" onkeypress="isInputNumber(event)" maxlength="11" minlength="11" id="phone" name="company_contact" class="form-control">                      
+            </div>
+          
+        </div>
+       <button type="submit" class="btn btn-primary mt-3" name="cou_sub">Submit</button>
+
+    </div>
+    {% for message in messages %}
+        <script type="text/javascript">
+          window.onload = function(){
+            alert('{{message}}')
+          }
+        </script>
+    {% endfor %}
+   
+  </form>
+
+</div>
+{% endblock %}

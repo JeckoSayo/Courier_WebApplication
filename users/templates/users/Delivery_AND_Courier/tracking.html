@@ -1,0 +1,66 @@
+{% extends 'users/Delivery_AND_Courier/main.html' %}
+{% block title %}
+
+Tracking Package
+
+{% endblock %}
+{% block content %}
+
+
+{% load static %}
+<div class="main2">
+
+  <div  class="back_home">
+    <span class="las la-arrow-circle-left"><a href="{% url 'Home' %}">BACK</a></span>
+  </div>
+  <form action="" method="GET" id="mayform">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="text" name="tracking" id="myInput" placeholder="Enter your tracking number" aria-label="Search" onkeyup="searchTableColumns()"/>
+    
+    <label id="search1">
+      <span id="searchButton" class="las la-search"></span>
+      <input type="submit"   name="find" style="display:none"/>
+    </label>
+  </form>
+
+
+  {% if not invalid and reveal %}
+  <div class="main1">
+
+
+    <img src="{% static 'users/img/Logo.png' %}" alt="" class="log1"> <span class="title1">T & C LOGISTICS SERVICES
+      172 COL GUIDO STREET ANGONO RIZAL
+    PHILIPPINES 1930</span>
+
+    <br>
+    <br>
+    <hr>
+    <div class="transac_user">
+      <h5>Tracking Number: {{tracking_number}} </h5>
+      <p id="status">{{t_status}}</p>
+      <h6 id="date">Date created: {{t_pub_date}} </h6>
+      <br>
+      <br>
+      <table>
+        <tr>
+          <td class="ti1">Date requested:</td>
+          <td class="s2101">{{t_requested_pickup}}</td>
+        </tr>
+      </table>
+    </div>
+ 
+
+    
+
+
+  </div>
+
+  {% elif invalid and not reveal %}
+  <div class="Error" name="invalid">
+    <span>Enter a valid Tracking Number !</span>
+  </div>
+  {% endif %}
+</div>
+
+
+{% endblock %}

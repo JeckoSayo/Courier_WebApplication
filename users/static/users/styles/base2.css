@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --main-color: #08647B;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+}
+.back_home{
+    color: #707B7C;
+    position: absolute;
+    left: -16rem;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+.back_home:hover{
+    color: #E3BB1C;
+}
+
+.back_home a{
+    color: #707B7C;
+    text-decoration: none;
+    margin-left: 5px;
+}
+.back_home a:hover{
+    color: #E3BB1C;
+    text-decoration: none;
+}
+
+#button_form{
+
+}
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+body{
+    background: #f1f5f9 !important;
+}
+
+.main{
+    padding: 2em 1em;
+    box-shadow: 0px 5px 15px #85a6bf33;
+    margin: 2em;
+    border-radius: 24px;
+    background-color: #fff;
+}
+
+.row label{
+    margin-top: 0.5rem;
+}
+
+.container button{
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+h4{
+    font-weight: 700 !important;
+}
+#icon{
+    position: absolute;
+    right: 5rem;
+    color: #08647B;
+    top: 4rem;
+}
+
+#icon:hover{
+    color: red;
+}
+
+
+
+#icon .tooltiptext {
+ right: -40px;
+    visibility: hidden;
+    width: 96px;
+    color: red;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 15px;
+    font-size: 0.8rem;
+}
+
+#icon:hover .tooltiptext {
+  visibility: visible;
+}
+#myInput{
+    padding: 1em 2em;
+    box-shadow: 0px 5px 15px #85a6bf33;
+    margin-top: 52px;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 51px;
+    border: none;
+    font-size: 1.1em;
+}
+
+.main2{
+    position: relative;
+    width: 39rem;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+.main1{
+    padding: 2em 2em;
+    position: relative;
+    box-shadow: 0px 5px 15px #85a6bf33;
+    margin-top: 2rem;
+    border-radius: 24px;
+    background-color: #fff;
+}
+#search1{
+    position: absolute;
+    right: 11px;
+    font-size: 31px;
+    color: #85929E;
+    cursor: pointer;
+    border: 10% !important;
+    top: -10px;
+    border-radius: 58%;
+    padding: 4px;;
+}
+#search1:hover{
+    background-color:rgba(25, 164, 223, 0.04);
+}
+#date{
+    color: #7F8C8D;
+}
+#status{
+    position: absolute;
+    right: 23px;
+    background-color: #F9E79F ;
+    padding: 11px;
+    border-radius: 11px;
+    margin-top: -45px;
+    font-weight: bold;
+    color: #B7950B;
+}
+h5{
+    font-weight: 900 !important;
+}
+.bd{
+    font-weight: bold;
+}
+
+.bd1{
+    font-weight: bold;
+}
+
+.main1 span{
+    position: absolute;
+    margin-top: -18px;
+   
+    
+}
+.log1{
+    width: 100px;
+    height: 76px;
+}
+td:last-child{
+    margin-left: 100px;
+}
+.price{
+    display: inline;
+    margin-left: 4rem;
+    color: #616A6B ;
+}
+.size{
+    display: inline;
+    margin-left: 6rem;
+    color: #616A6B ;
+}
+.des{
+    margin-top: 9px;
+    word-wrap: break-word;
+    color: #616A6B ;
+}
+.total{
+    display: inline;
+    position: absolute;
+    right: 264px;
+    top: 222px;
+}
+.Re{
+    color: #616A6B ;
+    margin-top: 0.3rem;}
+
+.Error{
+    position: absolute;
+    margin-top: 1r;
+    margin-top: 5rem;
+    margin-left: 7rem;
+    width: 26rem;
+    background-color:#F5B7B1;
+    padding: 8px;
+    text-align: center;
+    border-radius: 18px;
+
+}
+
+.Error span{
+    font-weight:500;
+    font-size: 1.4rem;
+    color: #424949;
+}
+#try{
+    position: absolute;
+    font-size: 10rem;
+}
+
+.title1{
+   font-weight: 600;
+    font-size: 18px;
+    top: 64px;
+    width: 30rem;
+    margin-left: -12px;
+    text-align: center;
+}
+.transac_user{
+    margin-top: 46px;
+}
+p{
+    font-weight: bold;
+}
+.num_trac{
+    font-size: 20px;
+}
+.trac11{
+    right: 261px;
+    top: 172px;
+    font-size: 20px;
+}
+.add2{
+    position: absolute;
+    right: 308px;
+    top: 224px;
+}
+
+td.sun00{
+    width: 100%;
+    text-align: right;
+    color: #7F8C8D;
+}
+td.s2101{
+    width: 124px;
+    color:#7F8C8D;
+    text-align: center;
+}
+
+td.ti1{
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.add2 span{
+    width: 21rem !important;
+}
+.item_des{
+    text-align: justify;
+    position: relative;
+    top: -12px;
+    word-break: break-all;
+}
+.Shipper{
+    position: relative;
+    word-break: break-all;
+    width: 13rem;
+    top: -17px;
+}

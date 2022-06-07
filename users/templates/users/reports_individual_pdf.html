@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+
+    <title>Reports PDF</title>
+
+
+    
+
+
+    <style>
+@font-face {
+  font-family: Arial; src: url("files/arial.ttf");
+}
+body {
+  font-family: Arial;
+}
+      @page {
+        size: a6 portrait;
+        @frame content_frame {
+            left: 20pt;
+            width: 255pt;
+            top: 20pt;
+            height: 792pt;
+        }
+    }
+
+
+       img{
+        position: relative;
+        width: 55px;
+        height: 50px;
+        margin-top: 10px;
+        
+       }
+       td{
+        font-size: 18px;
+        padding: 2px;
+       }
+
+       td.title1{
+        width: 200pt;
+        text-align: center;
+       }
+
+       td.sub{
+        width: 150pt;
+        /*text-align:center;*/
+       }
+
+       td.sub1{
+      
+        text-align: right;
+       }
+
+       div{
+        margin-top: 10px;
+       }
+
+       tr{
+        margin-top: 50px;
+       }
+       
+
+       tr{
+        line-height:5px;
+        }
+             table {
+            -pdf-keep-with-next: true;
+        }
+        td.im{
+            text-align: center;
+        }
+        td.pa{
+            white-space: nowrap;
+        }
+
+     /*  table {-pdf-keep-in-frame-mode: shrink;}*/
+    </style>
+</head>
+<body>
+
+
+    <table width="100%"
+  >
+        <tr style="border-bottom: 1px solid #000;">
+            <td class="im"><img src="https://drive.google.com/uc?export=view&id=1J9xVj_PSiY5gz0yMcwJy_FeAWev__gC2"></td>
+            <td class="title1">T & C LOGISTICS SERVICES
+172 COL GUIDO STREET ANGONO RIZAL
+PHILIPPINES 1930</td>
+        </tr>
+    </table>
+     <table width="100%">
+        <tr>
+            <td >Tracking Number</td>
+            <td class="sub">{{t_tracking}}</td>
+            
+        </tr>
+        <tr>
+            <td>Shipper's Name</td>
+            <td class="sub">{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td class="sub">{{ user.user_address }}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Contact Number</td>
+            <td class="sub" >{{ user.user_contact }}</td>
+        </tr >
+ 
+        <tr >
+            <td>Receiver Name</td>
+            <td class="sub">{{t_name}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td class="sub">{{ t_address }}</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Contact Number</td>
+            <td class="sub">{{ t_contact }}</td>
+        </tr>
+
+  
+        <tr>
+            <td>Item/s</td>
+            <td class="sub">{{ t_item }}</td>
+        </tr>
+        <tr>
+            <td>Pouch Size</td>
+            <td class="sub">{{ t_pouch_size }}</td>
+        </tr>
+        <tr>
+            <td>Delivery Fee</td>
+            <td class="sub1">{{ t_fee }} PHP</td>
+        </tr>
+        <tr>
+            <td>Item Value</td>
+            <td class="sub1">{{ t_value }} PHP</td>
+        </tr>
+        <tr>
+            <td class="pa">Payment Options</td>
+            <td class="sub1" >{{ t_payment }}</td>
+        </tr>
+    </table>
+
+
+
+</body>
+</html>

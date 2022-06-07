@@ -1,0 +1,60 @@
+{% extends 'users/admin/admin_main.html'%}
+{% block title %}
+
+Admin Transaction
+
+{% endblock %}
+{% block content %}        
+        <main>
+            
+            <section class="recent">
+                <div class="activity-grid">
+                    
+                    <form method="get" id="searchA" class="form-inline">
+                       <div class="form-group">
+                            {{myFilter.form}}
+                        </div>
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+
+                    <div class="activity-card">
+                    
+                    <div id="header-card">
+                        <h3>All transaction</h3>
+                    </div>
+                    
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tracking Number</th>
+                                        <th>Status</th>
+                                        <th>Contact No.</th>
+                                        <th>Date</th>
+                                        <th>Pouch Size</th>
+                                        <th>Item Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                        {% for i in transaction %}
+                                        <tr>
+                                            <td>{{i.tracking_number}}</td>
+                                            <td>{{i.delivery_status}}</td>
+                                            <td>{{i.receiver_contact}}</td>
+                                            <td>{{i.pub_date}}</td>
+                                            <td>{{i.pouch_size}}</td>
+                                            <td>{{i.item_value}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+            
+        </main>
+{% endblock %}

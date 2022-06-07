@@ -1,0 +1,191 @@
+<div id="myModal" class="modal" role="dialog">
+  <!-- Modal content -->
+  <div class="modal-content">
+  	
+    <div class="modal-body">
+
+    <div class="container" id="container" >
+    	<span class="close" id="modal-close"></span>
+  	<div class="form-container sign-up-container">
+		
+			<form method="POST" class="needs-validation" novalidate id="post_form" action="">
+				{% csrf_token %}
+			<div class="Up">
+				<h2 id="modal-h1" class="cre">Create Account</h2>
+					{{registration_form.username}}
+					{{registration_form.user_contact}}
+					{{registration_form.user_address}}
+					{{registration_form.email}}
+	
+					{{registration_form.password1}}
+					<!--
+					<div toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" id="eye"></div>
+
+				-->
+					
+					{{registration_form.password2}}
+					<!--
+					<span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password1" id="eye2"></span>
+				-->
+			
+			</div>
+
+
+				
+						<button id="button_form" name="signUp" class="sign" type="submit">Sign Up</button>  <!-- Register -->
+						
+			</form>
+			{% for field in registration_form %}
+				
+				{% for error in field.errors %}
+					<script>
+							$('#myModal').modal('show');
+					</script>
+				
+				<div class="alert alert-danger" id="form-feedback" role="alert">
+				{{ error }}
+				</div>
+
+				<script type="text/javascript">
+					window.onload = function(){
+						Swal.fire({
+							icon: 'error',
+							text:'{{ error }}'
+							})
+						document.getElementById('signUp').click();
+					}
+				</script>
+
+				{% endfor %}
+				
+				{% endfor %}
+				{% if registration_form.non_field_errors %}
+				<script>
+							$('#myModal').modal('show');
+				</script>
+				<div class="alert alert-danger form-feedback" id="form-feedback" role="alert">	
+				
+				{{registration_form.non_field_errors}} </div>
+				
+				<script type="text/javascript">
+
+					window.onload = function(){
+						Swal.fire({
+							icon: 'error',
+							text:'{{ registration_form.non_field_errors }}'
+							})
+						document.getElementById('signUp').click();
+					}
+
+
+				</script>
+				{% endif %}
+		</div>
+
+		
+		<div class="form-container sign-in-container">
+				<form method="POST" class="needs-validation2" novalidate>
+					{% csrf_token %}
+					<h1 id="modal-h1">Sign In</h1>
+							<span>or use your account</span>
+							<input type="email" name="email" placeholder="Email" class="form-control" id="validationCustom03" required>
+							<input type="password" name="password" placeholder="Password" class="form-control" id="validationCustom05" required>
+							{% for field in login_form %}
+				
+				{% for error in field.errors %}
+				<script type="text/javascript">
+					window.onload = function(){
+						Swal.fire({
+							icon: 'error',
+							text:'{{ error }}'
+							})
+					}
+				</script>
+
+				<script>
+							$('#myModal').modal('show');
+				</script>
+				{% endfor %}
+				
+				{% endfor %}
+				{% if login_form.non_field_errors %}
+				<script type="text/javascript">
+					window.onload = function(){
+						Swal.fire({
+							icon: 'error',
+							text:'Invalid Email or Password'
+							})
+					}
+				</script>
+				<script>
+							$('#myModal').modal('show');
+				</script>
+				{% endif %}
+								<a href="#" id="Forgot">Forgot Your Password</a>
+						<button id="button_form" name="signIn" type="submit">Sign In</button>  <!-- Sign In -->
+				</form>
+		</div>
+
+		
+		<div class="overlay-container">
+				<div class="overlay">
+				 		<div class="overlay-panel overlay-left">
+							<h1 id="modal-h1">Welcome Back!</h1>
+							<p id="pa">To keep connected with us please login with your personal info</p>
+							<button class="ghost" id="signIn">Sign In</button>
+						</div>
+						<div class="overlay-panel overlay-right">
+							<h1 id="modal-h1">Hello, Friend!</h1>
+							<p id="pa">Enter your details and start journey with us</p>
+								<button class="ghost" id="signUp">Sign Up</button>
+					</div>
+				</div>
+			</div>
+
+ </div>
+  </div>
+</div>
+</div>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+</script>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation2');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+</script>

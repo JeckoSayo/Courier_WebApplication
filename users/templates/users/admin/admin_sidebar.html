@@ -1,0 +1,68 @@
+<div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="las la-user-alt"></span> 
+                <span>Admin Panel</span>
+            </h3> 
+            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'admin_dashboard' %}">
+                        <span class="las la-igloo"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >
+
+                        <span class="las la-user"></span>
+                        <span class="user1" >Users</span>
+                        <span class="las la-angle-down down"></span>
+
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                             <a href="{% url 'admin_user' %}">
+                                <span class="las la-user-tie" id="one"></span>
+                                <span>User</span>
+                            </a>
+                        </li>
+                        <li>
+                             <a href="{% url 'admin_courierP' %}">
+                                <span class="las la-box" id="one"></span>
+                                <span>Courier Partners</span>
+                             </a>
+                        </li>
+                        <li>
+                             <a href="{% url 'admin_deliveryP' %}">
+                                <span class="las la-shipping-fast" id="one"></span>
+                                <span>Delivery Partners</span>
+                             </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'admin_transaction' %}">
+                        <span class="las la-briefcase"></span>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'admin_profile' %}">
+                        <span class="las la-user"></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Home' %}">
+                        <span class="las la-sign-out-alt"></span>
+                         <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   
+    <title>Reports PDF</title>
+    <style>
+       
+        th, td{
+            padding: 5px 15px;
+            text-align: center;
+        }
+        th{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        td{
+            font-size: 15px;
+        }
+        h1{
+            font-size: 2rem;
+        }
+        #id_ac{
+            width: 2rem;
+        }
+        p, strong, h4{
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;" >COURIER REPORT</h1>
+    
+    <table>
+        <td style="text-align: left;">
+            <h3>SUMMARY:</h3>
+            <p>Total Transactions: {{total_transact}}</p>
+            <p>Total Delivery Partners: {{total_delivery}}</p>
+            <p>Total Courier Partners: {{total_courier}}</p>
+            <p>In transit: {{in_transit}}</p>
+            <p>Pending: {{pending}}</p>    
+        </td>
+        <td style="text-align: left;">
+            <h5>STATUS</h5>
+            <p>Ready to pickup: {{ready}}</p>
+            <p>Picked up: {{pickup}}</p>
+            <p>Dispatched for delivery: {{dispatched}}</p>
+            <p>Delivered: {{delivered}}</p>
+        </td>
+    </table>
+    <hr>
+<!-- --------------------------------------------------------------------- -->
+    <h1 style="text-align: center;" >Price Update History</h1>
+        <table border="1" style="border-collapse: collapse;">
+            <thead>
+                <td>Update ID</td>
+                <td>Provincial(S)</td>
+                <td>Provincial(M)</td>
+                <td>Provincial(L)</td>
+                <td>Provincial(XL)</td>
+                <td>Provincial(Box)</td>
+            </thead>
+            <tbody>
+                {% for i in prices %}
+                <tr>
+                    <td>{{i.update_id}}</td>
+                    <td>{{i.provincial_price_small}}</td>
+                    <td>{{i.provincial_price_medium}}</td>
+                    <td>{{i.provincial_price_large}}</td>
+                    <td>{{i.provincial_price_extra_large}}</td>
+                    <td>{{i.provincial_price_box}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+        <br>
+        <table border="1" style="border-collapse: collapse;">
+            <thead>
+                <td>Update ID</td>
+                <td>Metro Manila(S)</td>
+                <td>Metro Manila(M)</td>
+                <td>Metro Manila(L)</td>
+                <td>Metro Manila(XL)</td>
+                <td>Metro Manila(Box)</td>
+            </thead>
+            <tbody>
+                {% for i in prices %}
+                <tr>
+                    <td>{{i.update_id}}</td>
+                    <td>{{i.metro_manila_price_small}}</td>
+                    <td>{{i.metro_manila_price_medium}}</td>
+                    <td>{{i.metro_manila_price_large}}</td>
+                    <td>{{i.metro_manila_price_extra_large}}</td>
+                    <td>{{i.metro_manila_price_box}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+        <br>
+        <table border="1" style="border-collapse: collapse;">
+            <thead>
+                <td>Update ID</td>
+                <td>Mega Manila(S)</td>
+                <td>Mega Manila(M)</td>
+                <td>Mega Manila(L)</td>
+                <td>Mega Manila(XL)</td>
+                <td>Mega Manila(Box)</td>
+            </thead>
+            <tbody>
+                {% for i in prices %}
+                <tr>
+                    <td>{{i.update_id}}</td>
+                    <td>{{i.mega_manila_price_small}}</td>
+                    <td>{{i.mega_manila_price_medium}}</td>
+                    <td>{{i.mega_manila_price_large}}</td>
+                    <td>{{i.mega_manila_price_extra_large}}</td>
+                    <td>{{i.mega_manila_price_box}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+    <hr>
+
+<!-- --------------------------------------------------------------------- -->
+    <h1 style="text-align: center;" >Transaction</h1>
+    {% for i in transaction%}
+
+        <Strong>Transactor: {{i.transactor}}</Strong><br>
+        <strong>Tracking Number: {{i.tracking_number}}</strong>
+        <h4>Receiver Details</h4>
+        <p>Receiver ID: {{i.receiver_id}}</p>
+        <p>Name: {{i.receiver_name}}</p>
+        <p>Email: {{i.receiver_email}}</p>
+        <p>Address: {{i.receiver_address}}</p>
+        <p>Contact: {{i.receiver_contact}}</p>
+
+        <h4>Parcel Details</h4>
+        <p>Desription: {{i.item_desc}}</p>
+        <p>Value: {{i.item_value}}</p>
+        <p>Pouch Size: {{i.item_size}}</p>
+        <p>Payment option: {{i.item_payment}}</p>
+        <p>Location: {{i.delivery_select}}</p>
+        <p>Requested date: {{i.requested_pickup}}</p>
+        
+        <h4>Admin Side</h4>
+        <p>In transit: {{i.admin_approved}}</p>
+        <p>Delivery Partner: {{i.delivery_partner}}</p>
+        <p>Courier Partner: {{i.courier_partner}}</p>
+        <p>Status: {{i.delivery_status}}</p>
+        <p>-------------------------------------------------------------------------------------------------------------</p>
+    {% endfor %}
+    <hr>
+<!-- ---------------------------------------------------------------------- -->
+    <h1 style="text-align: center;" >Delivery Partners</h1>
+    {% for i in deliveryPartner %}
+        <h4>Partner ID: {{i.partner_id}}</h4>
+        <p>Name: {{i.partner_name}}</p>
+        <p>Email: {{i.partner_email}}</p>
+        <p>Address: {{i.partner_address}}</p>
+        <p>Contact: {{i.partner_contact}}</p>
+        <p>birthday: {{i.partner_birthday}}</p>
+        <p>vehicle: {{i.partner_vehicle}}</p>
+        <p>gcash: {{i.partner_gcash}}</p>
+        <p>license: {{i.partner_license}}</p>
+        <p>------------------------------------------------------------------------</p>
+    {% endfor %}
+    <hr>
+<!-- ---------------------------------------------------------------------- -->
+    <h1 style="text-align: center;">Courier Partner</h1>
+    {% for i in courierPartner%}
+        <h4>Partner ID: {{i.company_id}}</h4>
+        <p>Comppany Name: {{i.company_name}}</p>
+        <p>Address: {{i.company_address}}</p>
+        <p>Contact: {{i.company_contact}}</p>
+        <p>------------------------------------------------------------------------</p>
+    {% endfor %}
+</body>
+</html>

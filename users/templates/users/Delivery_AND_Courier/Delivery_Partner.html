@@ -1,0 +1,98 @@
+{% extends 'users/Delivery_AND_Courier/main.html' %}
+{% block title %}
+
+Delivery Partners 
+
+{% endblock %}
+{% block content %}
+<div class="main">
+  <form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="container">
+      <h4>Create Delivery Partners Account</h4>
+
+      <a href="{% url 'Home' %}">
+          <span class="las la-times" id="icon">
+          <span class="tooltiptext">Close</span>
+          </span>
+      </a>
+
+      <div class="row">
+          <div class="col-12">
+            <label for="validationTooltip01">Full name</label>
+            <input type="text" class="form-control"id="validationTooltip01" placeholder="Name" name="partner_name" required>
+          </div>
+            <div class="col-12">
+              <label for="validationTooltip02">Enter email</label>
+              <input type="text" class="form-control" id="validationTooltip02" id="email" placeholder="Email" name="partner_email" required>
+            </div>
+
+             <div class="col-12">
+              <label for="validationTooltip03">Address</label>
+             <input type="text" class="form-control" id="validationTooltip03" placeholder="Address" name="partner_address" required>
+            </div>
+            <div class="col-6">
+              <label for="validationTooltip04">Contact No.</label>
+               <input type="tel" maxlength="11" minlength="11" id="phone" onkeypress="isInputNumber(event)" name="partner_contact" id="validationTooltip04" class="form-control" placeholder="Contact No." required>
+               <label for="exampleFormControlSelect1">Birthday</label>
+                  <div class="form-group">
+                    <input type="date" class="form-control" name="partner_birthday" id="dateofbirth" id="validationTooltip08" required>
+                  </div>                       
+            </div>
+            <div class="col-6">
+              <label for="validationTooltip05">Vehicle</label>
+               <select  class="form-control" placeholder="Vehicle" name="partner_vehicle" id="validationTooltip05" required>
+                  <option value="Motorcycle">Motorcycle</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="MPV">Mpv</option>
+                  <option value="Van">Van</option>
+                  <option value="Light Truck">Light Truck</option>
+                </select>
+
+              <label for="validationTooltip06">GCash</label>
+               <input type="text" maxlength="11" minlength="11" class="form-control" onkeypress="isInputNumber(event)" placeholder="GCash" name="partner_gcash" id="validationTooltip06"required>
+            </div>
+
+            <div class="col-6">
+              <label for="validationTooltip07">Driver's License</label>
+               <input type="text" maxlength="20" class="form-control" name="partner_license" id="validationTooltip07" required>
+            </div>
+        </div>
+       <button type="submit" class="btn btn-primary mt-3" name="del_sub">Submit</button>
+
+    </div>
+    {% for message in messages %}
+        <script type="text/javascript">
+          window.onload = function(){
+            alert('{{message}}')
+          }
+        </script>
+    {% endfor %}
+   
+  </form>
+
+</div>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+</script>
+{% endblock %}

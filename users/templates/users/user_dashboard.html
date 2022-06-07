@@ -1,0 +1,239 @@
+{% extends 'users/main.html'%}
+
+{% block title %}
+
+Dashboard
+
+{% endblock %}
+{% block content %}        
+        <main>
+            
+            <h2 class="dash-title">Overview</h2>
+            
+            
+            <div class="dash-cards">
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h5>Total transaction</h5>
+                            <h4>{{total}}</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-reload"></span>
+                        <div>
+                            <h5>Total Processing</h5>
+                            <h4>{{processing}}</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-check-box"></span>
+                        <div>
+                            <h5>Total Pending</h5>
+                            <h4>{{pending}}</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-check-box"></span>
+                        <div>
+                            <h5>Total Delivered</h5>
+                            <h4>{{delivered}}</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <section class="recent">
+                    <!-- ------------------------ -->
+                    <div class="activity-card">
+                    <div id="header-card">
+                        <h3>TRANSACTION</h3>
+                    </div>
+
+    {% if request.user.is_authenticated and request.user.is_staff %}
+                        <div class="table-responsive">
+                            <table id="myTable" class="table" >
+                                <thead>
+                                    <tr>
+                                        <th class="sticky-col first-col">PDF</th>
+                                        <th>Tracking Number</th>
+                                        <th>Processing</th>
+                                        
+                                        <!-- RECEIVER INFO -->
+                                        <th>Transaction ID</th>
+                                        <th>Receiver Name</th>
+                                        <th>Receiver Email</th>
+                                        <th>Receiver Address</th>
+                                        <th>Receiver Contact</th>
+                                        <!-- ITEM DESCRIPTION -->
+                                        <th>Item Description</th>    
+                                        <th>Item Value</th>
+                                        <th>Pouch Size</th>
+                                        <th>Payment Option</th> 
+                                        <th>Location</th>
+                                        <!-- ADMIN SIDE -->
+                                        <th>Status</th>
+                                        <th>Requested Date</th>
+                                        <th>Publication Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        {% for i in transact1 %}
+                                        <tr>
+                                            <td class="sticky-col2 second-col">
+                                                <form method="POST" action="{% url 'Individual' %}">
+                                                    {% csrf_token%}
+                                                      <button type="submit" value={{i.tracking_number}} class="btn btn-warning" name="report"
+                                                    >
+                                                    <span id="pdfButton2" class="las la-file-pdf"></span>
+                                                  
+                                                    </button>
+
+                                                </form>
+                                            </td>
+                                            <td>{{i.tracking_number}}</td>
+                                            <td>{{i.admin_approved}}</td>
+                                            <!-- RECEIVER INFO -->
+                                            <td>{{i.receiver_id}}</td>
+                                            <td>{{i.receiver_name}}</td>
+                                            <td>{{i.receiver_email}}</td>
+                                            <td>{{i.receiver_address}}</td>
+                                            <td>{{i.receiver_contact}}</td>
+                                            <!-- ITEM DESCRIPTION -->
+                                            <td>{{i.item_desc}}</td>
+                                            <td>{{i.item_value}}</td>
+                                            <td>{{i.item_size}}</td>
+                                            <td>{{i.item_payment}}</td>
+                                            <td>{{i.delivery_select}}</td>
+                                            <!-- ADMIN SIDE -->
+                                            <td>{{i.delivery_status}}</td>
+                                            <td>{{i.requested_pickup}}</td>
+                                            <td>{{i.pub_date}}</td>
+                                            
+
+                                        </tr>
+                                        {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+            
+    {% endif %}
+<!--
+<ul>
+  <li class="grp-results">
+      <span>{{paginator.count}} total</span>
+  </li>
+  {% if data.number|add:'-4' > 1 %}
+    <li><a href="?page=1">1</a></li>
+    <li><a href="?page={{ data.number|add:'-5' }}">&hellip;</a></li>
+  {% endif %}
+  {% for i in data.paginator.page_range %}
+    {% if data.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+    {% elif i > data.number|add:'-3' and i < data.number|add:'3' %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+  {% endfor %}
+  {% if data.paginator.num_pages > data.number|add:'4' %}
+    <li><a href="?page={{ data.number|add:'5' }}">&hellip;</a></li>
+    <li><a href="?page={{ data.paginator.count }}">{{ data.paginator.count }}</a></li>
+  {% endif %}
+</ul>
+-->
+
+            {% if request.user.is_authenticated and request.user and request.user.is_staff == False  %}
+                     <div class="table-responsive">
+                            <table id="myTable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="sticky-col first-col">PDF</th>
+                                        <th>Tracking Number</th>
+                                        <th>Processing</th>
+                                        
+                                        <!-- RECEIVER INFO -->
+                                        <th>Transaction ID</th>
+                                        <th>Receiver Name</th>
+                                        <th>Receiver Email</th>
+                                        <th>Receiver Address</th>
+                                        <th>Receiver Contact</th>
+                                        <!-- ITEM DESCRIPTION -->
+                                        <th>Item Description</th>    
+                                        <th>Item Value</th>
+                                        <th>Pouch Size</th>
+                                        <th>Payment Option</th> 
+                                        <th>Location</th>
+                                        <!-- ADMIN SIDE -->
+                                        <th>Status</th>
+                                        <th>Requested Date</th>
+                                        <th>Publication Date</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        {% for i in transaction %}
+                                        <tr>
+                                            <td class="sticky-col2 second-col">
+                                                <form method="POST" action="{% url 'Individual' %}">
+                                                    {% csrf_token%}
+                                                      <button type="submit" value={{i.tracking_number}} class="btn btn-warning" name="report"
+                                                    >
+                                                    <span id="pdfButton2" class="las la-file-pdf"></span>
+                                                  
+                                                    </button>
+
+                                                </form>
+                                            </td>
+                                            <td>{{i.tracking_number}}</td>
+                                            <td>{{i.admin_approved}}</td>
+                                            <!-- RECEIVER INFO -->
+                                            <td>{{i.receiver_id}}</td>
+                                            <td>{{i.receiver_name}}</td>
+                                            <td>{{i.receiver_email}}</td>
+                                            <td>{{i.receiver_address}}</td>
+                                            <td>{{i.receiver_contact}}</td>
+                                            <!-- ITEM DESCRIPTION -->
+                                            <td>{{i.item_desc}}</td>
+                                            <td>{{i.item_value}}</td>
+                                            <td>{{i.item_size}}</td>
+                                            <td>{{i.item_payment}}</td>
+                                            <td>{{i.delivery_select}}</td>
+                                            <!-- ADMIN SIDE -->
+                                            <td>{{i.delivery_status}}</td>
+                                            <td>{{i.requested_pickup}}</td>
+                                            <td>{{i.pub_date}}</td>
+
+                                        </tr>
+                                        {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+
+      
+                        {% endif %}
+                    
+
+
+
+                  
+            </section>
+            
+        </main>
+{% endblock %}

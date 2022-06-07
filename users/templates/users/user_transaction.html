@@ -1,0 +1,123 @@
+{% extends 'users/main.html' %}
+{% block title %}
+
+Transactions
+
+{% endblock %}
+{% block content %}
+    
+        
+        <main>
+            <section class="recent">
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <div id="header-card">
+                        <h3>CREATE TRANSACTION</h3>
+                        </div>
+                        <div class="table-responsive">
+
+                            <form method="POST" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                                <div class="container">
+                                <h3>Receiver Details</h3>
+                                <div class="row">
+            
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Full Name" name="receiver_name" id="validationTooltip01" required>
+                                        <input type="text" class="form-control" id="email" placeholder="Enter email" name="receiver_email" id="validationTooltip02">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Address" name="receiver_address" id="validationTooltip03"required>
+                                        <input type="tel" maxlength="11" id="phone" name="receiver_contact" class="form-control" placeholder="Contact No." onkeypress="isInputNumber(event)" id="validationTooltip04" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group" id="form_item">
+                                            <label for="exampleFormControlSelect1" required>Pouch Size</label>
+                                            <select class="form-control" placeholder="Size" name="item_size" id="exampleFormControlSelect1" style="cursor:pointer;" id="validationTooltip05" >
+                                                <!-- <option value="">Open this select menu</option> -->
+                                                <{% for value, item in form.fields.item_size.choices %}
+                                                        <option value="{{value}}">{{item}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" name="item_value" placeholder="Item Value" id="validationTooltip06" required onkeypress="isInputNumber(event)">
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="date1">
+                                            <label for="exampleFormControlSelect1">Date of Requested Pickup</label>
+                                            <div class="form-group">
+                                                <input type="date" class="form-control" name="requested_pickup" id="validationTooltip07" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="loca1">
+                                        <label for="">Location</label>
+                                        <div class="form-group" id="form_item">
+                                            <select class="form-control" name="delivery_select" id="exampleFormControlSelect1" style="cursor:pointer;" >
+                                                 {% for value, delivery in form.fields.delivery_select.choices %}
+                                                        <option value="{{value}}">{{delivery}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                    <div class="payment1">
+                                        <label for="">Payment Option</label>
+                                        <div class="form-group" id="form_item">
+                                            <select class="form-control" name="item_payment" id="exampleFormControlSelect1" style="cursor:pointer;" >
+                                                <!-- <option value="">Mode of Payment</option> -->
+                                                {% for value, payment in form.fields.item_payment.choices %}
+                                                        <option value="{{value}}">{{payment}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group" id="form_item">
+                                            <textarea class="form-control" name="item_desc" id="exampleFormControlTextarea1" rows="5" placeholder="Item Description"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                    <button type="submit" class="btn btn-primary mt-3" id="but1" name="transact_sub">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+    <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+
+</script>
+{% endblock %}
